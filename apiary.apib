@@ -2,44 +2,35 @@ FORMAT: 1A
 HOST: https://private-2b41c-guilhermempg.apiary-mock.com
 
 # API Barramento MGApp
+## Overview
+
 **TRATAMENTO DE ERROS** 
 
 **Atenção!** Todos os serviços seguem o padrão para tratamento de erro do exemplo abaixo:
-
+```
 {
     "codigoMensagem": 1,
     "mensagem": "O Serviço está indisponível no momento. Tente novamente mais tarde!",
     "dataServidor": "2022-01-19 13:33:13"
 }
-
+```
 
 # Group Minhas Taxas
-## Baixar PDF Dae [/dae/baixar-pdf]
+## Baixar PDF Dae [/dae/baixar-pdf/{id}]
 ### Baixar PDF Dae [GET]
 
 + Response 200 (application/json)
 
-        [
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 2048
-                    }, {
-                        "choice": "Python",
-                        "votes": 1024
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 512
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 256
-                    }
-                ]
-            }
-        ]
+             [
+                {
+                     "codigoMensagem": 0,
+                      "mensagem": "OK",
+                    "objeto": {
+                     "daePdf": "JVBERi0xLjQKJeLjz9MKMyAwIG9iago8PC9Db2xvclNwYWNlL0RldmljZVJHQi9TdWJ0eXBlL0ltYWdlL0hlaWdodCAzMzcvRmlsdGVyL0RDVERlY29kZS9UeXBlL1hPYmplY3QvV2lkdGggMzkxL0JpdHNQZXJDb21wb25lbnQgOC9MZW5ndGggNTA3NzI+PnN0cmVhbQr/2P/gABBKRklGAAEBAQBgAGAAAP/bAEMACAYGBwYFCAcHBwkJCAoMFA0MCwsMGRITDxQdGh8eHRocHCAkLicgIiwjHBwoNyksMDE0NDQfJzk9ODI8LjM0Mv/bAEMBCQkJDAsMGA0NGDIhHCEyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMv/AABEIAVEBhwMBIgACEQEDEQH/xAAfAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJCgv/..."
+                 },
+                     "dataServidor": "2022-02-07 16:25:29"
+        }
+            ]
         
         
 ## Reemitir Dae [/dae/reemitir-dae]
