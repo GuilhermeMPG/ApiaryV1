@@ -1,13 +1,21 @@
 FORMAT: 1A
 HOST: https://private-2b41c-guilhermempg.apiary-mock.com
 
-# GuilhermeMPG 
+# API Barramento MGApp
+**TRATAMENTO DE ERROS** 
 
-Polls is a simple API allowing consumers to view polls and vote in them.
+**Atenção!** Todos os serviços seguem o padrão para tratamento de erro do exemplo abaixo:
 
-## Questions Collection [/questions]
+{
+    "codigoMensagem": 1,
+    "mensagem": "O Serviço está indisponível no momento. Tente novamente mais tarde!",
+    "dataServidor": "2022-01-19 13:33:13"
+}
 
-### List All Questions [GET]
+
+# Group Minhas Taxas
+## Baixar PDF Dae [/dae/baixar-pdf]
+### Baixar PDF Dae [GET]
 
 + Response 200 (application/json)
 
@@ -32,8 +40,60 @@ Polls is a simple API allowing consumers to view polls and vote in them.
                 ]
             }
         ]
+        
+        
+## Reemitir Dae [/dae/reemitir-dae]
+### Reemitir Dae [POST]
+You may create your own question using this action. It takes a JSON
+object containing a question and a collection of answers in the
+form of choices.
 
-### Create a New Question [POST]
++ Request (application/json)
+
+        {
+            "question": "Favourite programming language?",
+            "choices": [
+                "Swift",
+                "Python",
+                "Objective-C",
+                "Ruby"
+            ]
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /questions/2
+
+    + Body
+
+            {
+                "question": "Favourite programming language?",
+                "published_at": "2015-08-05T08:40:51.620Z",
+                "choices": [
+                    {
+                        "choice": "Swift",
+                        "votes": 0
+                    }, {
+                        "choice": "Python",
+                        "votes": 0
+                    }, {
+                        "choice": "Objective-C",
+                        "votes": 0
+                    }, {
+                        "choice": "Ruby",
+                        "votes": 0
+                    }
+                ]
+            }
+
+# Group Certidões
+
+## Solicitar Certidao via Formulario [/egov/gravarEgov]
+
+
+### Solicitar Certidao via Formulario [POST]
 
 You may create your own question using this action. It takes a JSON
 object containing a question and a collection of answers in the
@@ -79,4 +139,53 @@ form of choices.
                 ]
             }
             
-## Questions Perguntas [/perguntas]
+            
+            
+            
+## Busca Cartorio [/egov/listarBaseadoExemploEgov]            
+            
+### Busca Cartorio [POST]
+
+You may create your own question using this action. It takes a JSON
+object containing a question and a collection of answers in the
+form of choices.
+
++ Request (application/json)
+
+        {
+            "question": "Favourite programming language?",
+            "choices": [
+                "Swift",
+                "Python",
+                "Objective-C",
+                "Ruby"
+            ]
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /questions/2
+
+    + Body
+
+            {
+                "question": "Favourite programming language?",
+                "published_at": "2015-08-05T08:40:51.620Z",
+                "choices": [
+                    {
+                        "choice": "Swift",
+                        "votes": 0
+                    }, {
+                        "choice": "Python",
+                        "votes": 0
+                    }, {
+                        "choice": "Objective-C",
+                        "votes": 0
+                    }, {
+                        "choice": "Ruby",
+                        "votes": 0
+                    }
+                ]
+            }
