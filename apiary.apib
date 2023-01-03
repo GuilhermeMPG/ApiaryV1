@@ -1,7 +1,7 @@
 FORMAT: 1A
-HOST: https://private-2b41c-guilhermempg.apiary-mock.com
+HOST: https://deckofcardsapi.com/api
 
-# API Barramento MGApp
+# Deck of Cards API
 ## Overview
 
 **TRATAMENTO DE ERROS** 
@@ -15,67 +15,97 @@ HOST: https://private-2b41c-guilhermempg.apiary-mock.com
 }
 ```
 
-# Group Minhas Taxas
-## Baixar PDF Dae [/dae/baixar-pdf/{id}]
-### Baixar PDF Dae [GET]
+# Group Novo Deck
+## Novo Baralho [/deck/new/]
+### Novo Baralho Nao Embaralhado [GET]
+Abra um novo baralho de cartas.
+A-espadas, 2-espadas, 3-espadas... seguido de ouros, paus e copas.
+
+Dica: adicione jokers_enabled=true como um parâmetro GET ou POST à ​​sua solicitação para incluir dois Jokers no baralho.
+
++ Parameters 
+
+    + jokers_enabled (boolean, optional)
 
 + Response 200 (application/json)
 
-             [
+      + Body   
+      
                 {
-                     "codigoMensagem": 0,
-                      "mensagem": "OK",
-                    "objeto": {
-                     "daePdf": ""
-                     "dataServidor": "2022-02-07 16:25:29"
-        }
-            ]
+                      "sucesso": verdadeiro,
+                      "deck_id": "3p40paa87x90",
+                      "embaralhado": falso,
+                      "restante": 52
+                }
+
+
+
+
+
+### Novo Baralho Nao Embaralhado [POST]
+Abra um novo baralho de cartas.
+A-espadas, 2-espadas, 3-espadas... seguido de ouros, paus e copas.
+
+Dica: adicione jokers_enabled=true como um parâmetro GET ou POST à ​​sua solicitação para incluir dois Jokers no baralho.
+
++ Request 
+    + Headers
+
+            Accept: application/json
+            Content-Type: application/json
+
+    + Attributes
+
+        + jokers_enabled: true (required)
         
+    + Body
+    
+             {
+                 "jokers_enabled":"true"
+             }
+
++ Response 200 (application/json)
+
+      + Body   
+      
+                {
+                      "sucesso": verdadeiro,
+                      "deck_id": "3p40paa87x90",
+                      "embaralhado": falso,
+                      "restante": 52
+                }
         
-## Reemitir Dae [/dae/reemitir-dae]
-### Reemitir Dae [POST]
-You may create your own question using this action. It takes a JSON
-object containing a question and a collection of answers in the
-form of choices.
+
+### Novo Baralho Embaralhado [POST /deck/new/shuffle/]
+Adicione deck_count para definir o número de decks que você deseja usar. Blackjack normalmente usa 6 baralhos. O padrão é 1.
 
 + Request (application/json)
+    + Headers
 
-        {
-            "question": "Favourite programming language?",
-            "choices": [
-                "Swift",
-                "Python",
-                "Objective-C",
-                "Ruby"
-            ]
-        }
+            Accept: application/json
+            
+    + Attributes
+
+        + jokers_enabled: true (required)
+        
+    + Body
+    
+             {
+                 "deck_count"="1"
+             }
+
 
 + Response 201 (application/json)
 
-    + Headers
-
-            Location: /questions/2
+ 
 
     + Body
 
             {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 0
-                    }, {
-                        "choice": "Python",
-                        "votes": 0
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 0
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 0
-                    }
-                ]
+                    "sucesso": verdadeiro,
+                    "deck_id": "3p40paa87x90",
+                    "embaralhado": verdadeiro,
+                    "restante": 52
             }
 
 # Group Certidões
@@ -83,13 +113,13 @@ form of choices.
 ## Solicitar Certidao via Formulario [/egov/gravarEgov]
 
 
-### Solicitar Certidao via Formulario [POST]
+### Novo Baralho Nao Embaralhado [POST]
 
 You may create your own question using this action. It takes a JSON
 object containing a question and a collection of answers in the
 form of choices.
 
-+ Request (application/json)
++ Paeameters (application/json)
 
         {
             "question": "Favourite programming language?",
