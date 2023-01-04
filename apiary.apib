@@ -113,15 +113,15 @@ Adicione deck_count para definir o número de decks que você deseja usar. Black
 
 ## Embaralhar Cartas [/api/deck/{deck_id}/shuffle/{?remaining}]
 
-### Embaralhar Cartas [POST]
+### Embaralhar Cartas GET [GET]
 
 Não jogue fora um baralho quando tudo o que você quer fazer é embaralhar. Inclua o deck_id em sua chamada para embaralhar suas cartas. Não se preocupe em nos lembrar com quantos baralhos você está jogando.
 Adicionar o parâmetro remaining=true  apenas embaralhará as cartas restantes na pilha principal, deixando quaisquer pilhas ou cartas compradas sozinhas.
 
 + Parameters 
 
-        + deck_id: 3p40paa87x90 (string, required) - Id para identificação do baralho
-        + remaining: true (boolean, optional) - Embaralhará as cartas restantes na pilha principal
+    + deck_id: 3p40paa87x90 (string, required) - Id para identificação do baralho
+    + remaining: true (boolean, optional) - Embaralhará as cartas restantes na pilha principal
         
 
 + Response 200 
@@ -133,4 +133,51 @@ Adicionar o parâmetro remaining=true  apenas embaralhará as cartas restantes n
                 "deck_id": "3p40paa87x90",
                 "embaralhado": verdadeiro,
                 "restante": 52
+            }
+            
+## Tirar Cartas do Baralho [/api/deck/{deck_id}/draw/{?count}]
+
+### Tirar Cartas do Baralho POST [POST]
+
+A variável count define quantas cartas retirar do baralho. Certifique-se de substituir deck_id por um deck_id válido. Usamos o deck_id como um identificador para sabermos quem está jogando com qual deck.
+Depois de duas semanas, se nenhuma ação tiver sido feita no baralho, nós o descartamos.
+
+DICA : substitua <<deck_id>> por " new " para criar um baralho embaralhado e comprar cartas desse baralho na mesma solicitação.
+
++ Parameters 
+
+    + deck_id: 3p40paa87x90 (string, required) - Id para identificação do baralho
+    + count: 1 (number, required) - Embaralhará as cartas restantes na pilha principal
+        
+
++ Response 200 
+
+    + Body
+
+            {
+                "sucesso": verdadeiro,
+                "deck_id": "kxozasf3edqu",
+                "cartas": [
+                    {
+                        "código": "6H",
+                        "imagem": "https://deckofcardsapi.com/static/img/6H.png",
+                        "imagens": {
+                                      "svg": "https://deckofcardsapi.com/static/img/6H.svg",
+                                      "png": "https://deckofcardsapi.com/static/img/6H.png"
+                                  }, 
+                        "valor": "6",
+                        "terno": "CORAÇÃO"
+                    }, 
+                    {
+                        "código": "5S",
+                        "image": "https://deckofcardsapi.com/static/img/5S.png",
+                        "imagens": {
+                                      "svg": "https://deckofcardsapi.com/static/img/5S.svg",
+                                      "png": "https://deckofcardsapi.com/static/img/5S.png"
+                                  }, 
+                        "valor": "5",
+                        "terno": "ESPADAS"
+                    }
+                ], 
+                "restante": 50
             }
