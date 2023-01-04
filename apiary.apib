@@ -15,17 +15,19 @@ HOST: https://deckofcardsapi.com
 }
 ```
 
-# Group Novo Deck
+# Group Deck
 ## Novo Baralho [/api/deck/new]
-### Novo Baralho Nao Embaralhado [GET]
+
+### Novo Baralho Nao Embaralhado [GET /{jokers_enabled}]
+
+
 Abra um novo baralho de cartas.
 A-espadas, 2-espadas, 3-espadas... seguido de ouros, paus e copas.
 
 Dica: adicione jokers_enabled=true como um parâmetro GET ou POST à ​​sua solicitação para incluir dois Jokers no baralho.
 
-+ Parameters 
-
-    + jokers_enabled (boolean, optional)
++ Parameters
+    + jokers_enabled:'true' (boolean, optional) -  Incluir dois Jokers no baralho.
 
 + Response 200 (application/json)
 
@@ -38,7 +40,13 @@ Dica: adicione jokers_enabled=true como um parâmetro GET ou POST à ​​sua s
                       "restante": 52
                 }
 
++ Response 400 (application/json)
 
+                {
+                     "codigoMensagem": 1,
+                     "mensagem": "O Serviço está indisponível no momento. Tente novamente mais tarde!",
+                     "dataServidor": "2022-01-19 13:33:13"
+                }
 
 
 
@@ -54,9 +62,10 @@ Dica: adicione jokers_enabled=true como um parâmetro GET ou POST à ​​sua s
             Accept: application/json
             Content-Type: application/json
 
-    + Attributes
-
-        + jokers_enabled: true (required)
+    + Attributes              
+         + jokers_enabled: true (boolean, optional)
+             
+             
         
     + Body
     
@@ -79,14 +88,15 @@ Dica: adicione jokers_enabled=true como um parâmetro GET ou POST à ​​sua s
 ### Novo Baralho Embaralhado [POST /api/deck/new/shuffle]
 Adicione deck_count para definir o número de decks que você deseja usar. Blackjack normalmente usa 6 baralhos. O padrão é 1.
 
-+ Request (application/json)
++ Request 
     + Headers
-
+    
+            Content-Type: application/json
             Accept: application/json
             
     + Attributes
 
-        + jokers_enabled: true (required)
+        + deck_count: 1 (number, required)
         
     + Body
     
