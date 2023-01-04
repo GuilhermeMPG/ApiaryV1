@@ -18,26 +18,16 @@ HOST: https://deckofcardsapi.com
 # Group Deck
 ## Novo Baralho [/api/deck/new]
 
-### Novo Baralho Nao Embaralhado [GET]
-
+### Novo Baralho Nao Embaralhado [GET /api/deck/new/{?jokers_enabled}]
 
 Abra um novo baralho de cartas.
 A-espadas, 2-espadas, 3-espadas... seguido de ouros, paus e copas.
 
 Dica: adicione jokers_enabled=true como um parâmetro GET ou POST à ​​sua solicitação para incluir dois Jokers no baralho.
 
-+ Request 
-    + Headers
++ Parameters
 
-            Accept: application/json
-            Content-Type: application/json
-
-    + Attributes              
-         + jokers_enabled: true (boolean, optional)
-             
-             
-        
-    + Body
+       + jokers_enabled: true (boolean, optional) - ...
 
 + Response 200 (application/json)
 
