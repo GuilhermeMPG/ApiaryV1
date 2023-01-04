@@ -40,13 +40,6 @@ Dica: adicione jokers_enabled=true como um parâmetro GET ou POST à ​​sua s
                       "restante": 52
                 }
 
-+ Response 400 (application/json)
-
-                {
-                     "codigoMensagem": 1,
-                     "mensagem": "O Serviço está indisponível no momento. Tente novamente mais tarde!",
-                     "dataServidor": "2022-01-19 13:33:13"
-                }
 
 
 
@@ -104,7 +97,7 @@ Adicione deck_count para definir o número de decks que você deseja usar. Black
              }
 
 
-+ Response 201 (application/json)
++ Response 200 (application/json)
 
  
 
@@ -117,81 +110,22 @@ Adicione deck_count para definir o número de decks que você deseja usar. Black
                     "restante": 52
             }
 
-# Group Certidões
 
-## Solicitar Certidao via Formulario [/egov/gravarEgov]
+## Embaralhar Cartas [/api/deck/{deck_id}/shuffle/{?remaining}]
 
 
-### Novo Baralho Nao Embaralhado [POST]
+### Embaralhar Cartas [POST]
 
-You may create your own question using this action. It takes a JSON
-object containing a question and a collection of answers in the
-form of choices.
+Não jogue fora um baralho quando tudo o que você quer fazer é embaralhar. Inclua o deck_id em sua chamada para embaralhar suas cartas. Não se preocupe em nos lembrar com quantos baralhos você está jogando.
+Adicionar o parâmetro remaining=true  apenas embaralhará as cartas restantes na pilha principal, deixando quaisquer pilhas ou cartas compradas sozinhas.
 
-+ Paeameters (application/json)
++ Parameters 
 
-        {
-            "question": "Favourite programming language?",
-            "choices": [
-                "Swift",
-                "Python",
-                "Objective-C",
-                "Ruby"
-            ]
-        }
+        + deck_id: 3p40paa87x90 (string, required) - Id para identificação do baralho
+        + remaining: true (boolean, optional) - Embaralhará as cartas restantes na pilha principal
+        
 
-+ Response 201 (application/json)
-
-    + Headers
-
-            Location: /questions/2
-
-    + Body
-
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 0
-                    }, {
-                        "choice": "Python",
-                        "votes": 0
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 0
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 0
-                    }
-                ]
-            }
-            
-            
-            
-            
-## Busca Cartorio [/egov/listarBaseadoExemploEgov]            
-            
-### Busca Cartorio [POST]
-
-You may create your own question using this action. It takes a JSON
-object containing a question and a collection of answers in the
-form of choices.
-
-+ Request (application/json)
-
-        {
-            "question": "Favourite programming language?",
-            "choices": [
-                "Swift",
-                "Python",
-                "Objective-C",
-                "Ruby"
-            ]
-        }
-
-+ Response 201 (application/json)
++ Response 200 (application/json)
 
     + Headers
 
