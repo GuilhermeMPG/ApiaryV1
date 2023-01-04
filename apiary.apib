@@ -18,7 +18,7 @@ HOST: https://deckofcardsapi.com
 # Group Deck
 ## Novo Baralho [/api/deck/new]
 
-### Novo Baralho Nao Embaralhado [GET /{jokers_enabled}]
+### Novo Baralho Nao Embaralhado [GET]
 
 
 Abra um novo baralho de cartas.
@@ -26,8 +26,18 @@ A-espadas, 2-espadas, 3-espadas... seguido de ouros, paus e copas.
 
 Dica: adicione jokers_enabled=true como um parâmetro GET ou POST à ​​sua solicitação para incluir dois Jokers no baralho.
 
-+ Parameters
-    + jokers_enabled:'true' (boolean, optional) -  Incluir dois Jokers no baralho.
++ Request 
+    + Headers
+
+            Accept: application/json
+            Content-Type: application/json
+
+    + Attributes              
+         + jokers_enabled: true (boolean, optional)
+             
+             
+        
+    + Body
 
 + Response 200 (application/json)
 
@@ -68,10 +78,7 @@ Dica: adicione jokers_enabled=true como um parâmetro GET ou POST à ​​sua s
              
         
     + Body
-    
-             {
-                 "jokers_enabled":"true"
-             }
+           
 
 + Response 200 (application/json)
 
@@ -84,6 +91,8 @@ Dica: adicione jokers_enabled=true como um parâmetro GET ou POST à ​​sua s
                       "restante": 52
                 }
         
+
+
 
 ### Novo Baralho Embaralhado [POST /api/deck/new/shuffle]
 Adicione deck_count para definir o número de decks que você deseja usar. Blackjack normalmente usa 6 baralhos. O padrão é 1.
