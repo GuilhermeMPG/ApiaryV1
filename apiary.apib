@@ -15,7 +15,7 @@ HOST: https://deckofcardsapi.com
 }
 ```
 
-# Group Deck
+# Group Baralho
 ## Novo Baralho [/api/deck/new]
 
 ### Novo Baralho Nao Embaralhado GET [GET /api/deck/new/{?jokers_enabled}]
@@ -113,7 +113,6 @@ Adicione deck_count para definir o número de decks que você deseja usar. Black
 
 ## Embaralhar Cartas [/api/deck/{deck_id}/shuffle/{?remaining}]
 
-
 ### Embaralhar Cartas [POST]
 
 Não jogue fora um baralho quando tudo o que você quer fazer é embaralhar. Inclua o deck_id em sua chamada para embaralhar suas cartas. Não se preocupe em nos lembrar com quantos baralhos você está jogando.
@@ -125,30 +124,13 @@ Adicionar o parâmetro remaining=true  apenas embaralhará as cartas restantes n
         + remaining: true (boolean, optional) - Embaralhará as cartas restantes na pilha principal
         
 
-+ Response 200 (application/json)
-
-    + Headers
-
-            Location: /questions/2
++ Response 200 
 
     + Body
 
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 0
-                    }, {
-                        "choice": "Python",
-                        "votes": 0
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 0
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 0
-                    }
-                ]
+             {
+                "sucesso": verdadeiro,
+                "deck_id": "3p40paa87x90",
+                "embaralhado": verdadeiro,
+                "restante": 52
             }
